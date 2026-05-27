@@ -5,7 +5,7 @@ on:
     inputs:
       destroy:
         description: 'Set to true to destroy the infrastructure'
-        required: false
+        required: true
         default: 'false'
 
 jobs:
