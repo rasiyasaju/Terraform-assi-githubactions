@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "demo_bucket" {
   bucket = "github-actions-rasdemo-bucket-2026"
+   force_destroy = true
 
   tags = {
     Name = "GitHubActionsBucket"
