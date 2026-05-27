@@ -2,6 +2,11 @@ name: Terraform AWS Pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Set to true to destroy the infrastructure'
+        required: false
+        default: 'false'
 
 jobs:
   terraform:
@@ -33,7 +38,13 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
+        if: ${{ inputs.destroy != 'true' }}
         run: terraform plan
 
       - name: Terraform Apply
+        if: ${{ inputs.destroy != 'true' }}
         run: terraform apply -auto-approve
+
+      - name: Terraform Destroy
+        if: ${{ inputs.destroy == 'true' }}
+        run: terraform destroy -auto-approve
