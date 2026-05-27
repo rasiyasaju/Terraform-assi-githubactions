@@ -34,3 +34,7 @@ jobs:
       - name: Terraform Plan
         run: terraform plan
         working-directory: ./terraform
+
+      - name: Terraform apply
+        run: terraform apply
+        working-directory: ./terraform   
